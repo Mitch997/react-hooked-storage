@@ -1,6 +1,6 @@
 {
   "name": "react-hooked-storage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hooks for localStorage and sessionStorage with TTL, sync, and in-memory fallback.",
   "author": "Michele Cavallaro Venditti",
   "license": "MIT",
