@@ -1,4 +1,4 @@
-# react-storage
+# react-hooked-storage
 
 🚀 A lightweight React hooks library for managing `localStorage` and `sessionStorage` with advanced features like TTL (time-to-live), cross-tab sync, and in-memory fallback.
 
