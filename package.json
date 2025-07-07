@@ -28,8 +28,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsup"
   },
-  "keywords": [],
-  "author": "",
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
