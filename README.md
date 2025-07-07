@@ -21,19 +21,29 @@ This library provides a set of composable React hooks that simplify access to br
    - Automatically parses and stringifies JSON values.
    - Provides methods to set and remove the stored value.
 
+   const [data,setData,removeData] = useLocalStorage("key",initialValue)
+
 2. useSessionStorage
    - Works the same as useLocalStorage but uses sessionStorage.
    - Useful for short-lived data that should not persist after the tab is closed.
 
+   const [data,setData,removeData] = useSessionStorage("key",initialValue)
+
+
 3. useStorage
    - A generic hook that supports both localStorage and sessionStorage based on an option.
-   - Example: useStorage('key', defaultValue, { type: 'session' })
+
+   const [data,setData,removeData] = useStorage("key",initialValue,{type:'session'})
+
 
 4. usePersistentState
    - Adds TTL (Time-To-Live) support to stored values.
    - Automatically removes expired values and resets the state.
    - Accepts an `onExpire()` callback to perform custom logic when the value expires.
    - Ideal for authentication tokens, temporary sessions, or expirable caches.
+
+   const [data,setData,removeData] = usePersistentState("key",initialValue,{ttl:10*60*1000,type:'session',onExpire:()=>{console.log('data has expired!')}})
+
 ---
 
 ## 📦 Installation
