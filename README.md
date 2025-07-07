@@ -21,19 +21,14 @@ This library provides a set of composable React hooks that simplify access to br
    - Automatically parses and stringifies JSON values.
    - Provides methods to set and remove the stored value.
 
-   const [data,setData,removeData] = useLocalStorage("key",initialValue)
-
 2. useSessionStorage
    - Works the same as useLocalStorage but uses sessionStorage.
    - Useful for short-lived data that should not persist after the tab is closed.
-
-   const [data,setData,removeData] = useSessionStorage("key",initialValue)
 
 
 3. useStorage
    - A generic hook that supports both localStorage and sessionStorage based on an option.
 
-   const [data,setData,removeData] = useStorage("key",initialValue,{type:'session'})
 
 
 4. usePersistentState
@@ -42,13 +37,95 @@ This library provides a set of composable React hooks that simplify access to br
    - Accepts an `onExpire()` callback to perform custom logic when the value expires.
    - Ideal for authentication tokens, temporary sessions, or expirable caches.
 
-   const [data,setData,removeData] = usePersistentState("key",initialValue,{ttl:10*60*1000,type:'session',onExpire:()=>{console.log('data has expired!')}})
-
 ---
 
 ## 📦 Installation
 
 npm install react-hooked-storage
+
+## 💡 Usage Example
+
+Here’s how to use `useLocalStorage` to persist a username:
+
+```jsx
+import { useLocalStorage } from 'react-hooked-storage';
+
+function UsernameForm() {
+  const [username, setUsername, clearUsername] = useLocalStorage('username', '');
+
+  return (
+    <div>
+      <input
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter your username"
+      />
+      <button onClick={clearUsername}>Clear</button>
+    </div>
+  );
+}
+```
+Here’s how to use `useSessionStorage` to persist a username:
+
+```jsx
+import { useSessionStorage } from 'react-hooked-storage';
+
+function UsernameForm() {
+  const [username, setUsername, clearUsername] = useSessionStorage('username', '');
+
+  return (
+    <div>
+      <input
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter your username"
+      />
+      <button onClick={clearUsername}>Clear</button>
+    </div>
+  );
+}
+```
+Here’s how to use `useStorage` to persist a username:
+
+```jsx
+import { useStorage } from 'react-hooked-storage';
+
+function UsernameForm() {
+  const [username, setUsername, clearUsername] = useStorage('username', '',{type:'session'});
+
+  return (
+    <div>
+      <input
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Enter your username"
+      />
+      <button onClick={clearUsername}>Clear</button>
+    </div>
+  );
+}
+```
+
+Or use usePersistentState with TTL (Time-To-Live):
+
+
+```jsx
+import { usePersistentState } from 'react-hooked-storage';
+
+function AuthToken() {
+  const [token, setToken] = usePersistentState('auth-token', null, {
+    ttl: 10000, // 10 seconds
+    onExpire: () => alert('Your session expired.'),
+  });
+
+  return (
+    <div>
+      <p>Token: {token}</p>
+      <button onClick={() => setToken('abc123')}>Set Token</button>
+    </div>
+  );
+}
+```
 
 🛠 Compatibility
 
