@@ -1,7 +1,26 @@
 {
   "name": "react-hooked-storage",
   "version": "1.0.0",
-  "description": "",
+  "description": "React hooks for localStorage and sessionStorage with TTL, sync, and in-memory fallback.",
+  "author": "Michele Cavallaro Venditti",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "storage",
+    "hook",
+    "localStorage",
+    "sessionStorage",
+    "ttl",
+    "sync",
+    "fallback"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mitch997/react-hooked-storage"
+  },
+  "bugs": {
+    "url": "https://github.com/Mitch997/react-hooked-storage/issues"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
